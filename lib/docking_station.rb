@@ -2,10 +2,10 @@ require_relative 'bike'
 
 class DockingStation
 
-attr_reader :bike
+  attr_reader :bikes
 
 	def release_bike
-		 fail "No more bikes available" unless @bikes
+		 fail "NO BIKES!" unless @bikes
 		 Bike.new
 		#bike.working? == true
 	end
