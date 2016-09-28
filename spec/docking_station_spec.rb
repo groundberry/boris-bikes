@@ -1,36 +1,28 @@
-require 'docking_station.rb'
-require 'bike.rb'
+require 'docking_station'
+require 'bike'
 
 describe DockingStation do
 	subject(:docking_station) {described_class.new}
 
 	it { is_expected.to respond_to :release_bike }
 
-# Long way
-# it "respond to the method release bike" do
-#   expect(subject).to respond_to :release_bike
-# end
+	it "gets a bike and checks if it works" do
+		bike = subject.release_bike
+		expect(bike).to be_working
+	end
 
+	it { is expected.to respond_to :bikes}
 
-it "gets a bike and checks if it works" do
-  bike = docking_station.release_bike
-  expect(bike).to be_working
-end
+	it { is_expected.to respond_to(:dock).with(1).arguments }
 
-it {is_expected.to respond_to(:dock).with(1).arguments}
+	it "returns docked bikes" do
+		bike = Bike.new
+		subject.dock(bike)
+		expect(subject.bikes).to eq (bike)
+	end
 
-it "returns docked bikes" do
-	bike = Bike.new
-	subject.dock(bike)
-	expect(subject.bike).to eq bike
-end
-
-it "doesn't release bikes when there aren't any available" do
-	expect{docking_station.release_bike}.to raise_error ("NO BIKES!")
-end
-
-#it "returns hired bikes to the docking station" do
-#	expect{bike.length}.to change{DockingStation.co}(from 0).to(1)
-#end
+	it "doesn't release bikes when there aren't any available" do
+		expect{subject.release_bike}.to raise_error ("NO BIKES!")
+	end
 
 end

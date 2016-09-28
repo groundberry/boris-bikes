@@ -1,12 +1,17 @@
-#require_relative 'bike.rb'
+require_relative 'bike'
+
 class DockingStation
+
 attr_reader :bike
+
 	def release_bike
+		 fail "No more bikes available" unless @bikes
 		 Bike.new
 		#bike.working? == true
 	end
 
 	def dock(bike)
-		@bike = bike
+		@bikes = bike
 	end
+
 end
