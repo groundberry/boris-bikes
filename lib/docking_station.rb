@@ -8,16 +8,13 @@ class DockingStation
   end
 
   def release_bike
-    raise 'No bike' unless @bike
-    Bike.new
+    raise 'No bike' if @bike.empty?
+    @bike.pop
   end
 
   def dock_bike(bike)
-    # raise 'No capacity' if @bike
+    raise 'No capacity' unless @bike.empty?
     @bike.push(bike)
-  end
-
-  def view_bike
-    @bike
+    bike
   end
 end
