@@ -26,15 +26,10 @@ describe DockingStation do
 		expect{ subject.release_bike }.to raise_error "NO BIKES!"
 	end
 
-	it "return an error when docking stations are full" do
-		subject.dock(Bike.new)
+
+	it "return an error when docking stations are 20" do
+		20.times { subject.dock Bike.new }
 		expect { subject.dock Bike.new }.to raise_error "Docking Stations are full"
 	end
 
-	describe '#dock' do
-		it "return an error when docking stations are 20" do
-				subject.dock(Bike.new)
-				expect {(20.times { subject.dock Bike.new })}.to raise_error "Docking stations are full"
-			end
-	end
 end
