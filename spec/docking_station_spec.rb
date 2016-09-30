@@ -19,7 +19,7 @@ describe DockingStation do
   describe '#dock_bike' do
     it 'docks a bike' do
       subject.dock_bike(Bike.new)
-      expect(subject.bike).not_to be_empty
+      expect(subject.bikes).not_to be_empty
     end
 
     it 'returns instance of the docked bike' do
@@ -28,7 +28,7 @@ describe DockingStation do
     end
 
     it 'should raise an error when docking station is full' do
-      subject.dock_bike(Bike.new)
+      20.times { subject.dock_bike(Bike.new) }
       expect { subject.dock_bike(Bike.new) }.to raise_error('No capacity')
     end
   end
