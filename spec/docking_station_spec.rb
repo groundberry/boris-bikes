@@ -32,5 +32,10 @@ describe DockingStation do
       DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
       expect { subject.dock_bike(Bike.new) }.to raise_error('No capacity')
     end
+
+		it 'should allow the user to set a maximum capacity' do
+			docking_station = DockingStation.new(45)
+			expect(docking_station.capacity).to eq 45
+		end
   end
 end
