@@ -1,20 +1,20 @@
 require_relative 'bike'
 
 class DockingStation
-  attr_accessor :bike
+  attr_accessor :bikes
 
   def initialize
-    @bike = []
+    @bikes = []
   end
 
   def release_bike
-    raise 'No bike' if @bike.empty?
-    @bike.pop
+    raise 'No bike' if @bikes.empty?
+    @bikes.pop
   end
 
   def dock_bike(bike)
-    raise 'No capacity' unless @bike.empty?
-    @bike.push(bike)
+    raise 'No capacity' if @bikes.length >= 20
+    @bikes.push(bike)
     bike
   end
 end
